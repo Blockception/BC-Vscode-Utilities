@@ -6,4 +6,3 @@
 		<img alt="npm" src="https://img.shields.io/npm/dt/bc-vscode-utilities">
   </a>
 </p>
-

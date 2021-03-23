@@ -1,7 +1,7 @@
 {
   "name": "bc-vscode-utilities",
   "version": "1.0.0",
-  "description": "The lexical analyzers basics used for analyzing code from VSCode documents",
+  "description": "The basic utillities for LSP extensions for vscode",
   "main": "./lib/src/main.js",
   "types": "./lib/src/main.d.ts",
   "scripts": {
@@ -22,8 +22,7 @@
     "url": "git+https://github.com/Blockception/BC-VSCode-Utilities.git"
   },
   "keywords": [
-    "lexical",
-    "basic",
+    "utillities",
     "vscode"
   ],
   "author": "Blockception Ltd",
