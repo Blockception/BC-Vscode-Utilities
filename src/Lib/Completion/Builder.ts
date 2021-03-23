@@ -1,6 +1,6 @@
 /*BSD 3-Clause License
 
-Copyright (c) 2021, Blockception Ltd
+Copyright (c) 2020, Blockception Ltd
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -27,26 +27,49 @@ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
 CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.*/
-import { ConnectionManager } from "./Connection/Manager";
+import { CompletionItem, CompletionItemKind, MarkupContent } from "vscode-languageserver-types";
 
-export class Console {
-  /**Sends a error to the console log of the server*/
-  static Error(message: string): void {
-    ConnectionManager.Connection.console.error(message);
+/**An object that helps with creating completion items */
+export class CompletionBuilder {
+  public items: CompletionItem[];
+  public OnNewItem: ((NewItem: CompletionItem) => void) | undefined;
+
+  constructor() {
+    this.items = [];
+    this.OnNewItem = undefined;
   }
 
-  /**Sends a error to the console log of the server*/
-  static Info(message: string): void {
-    ConnectionManager.Connection.console.info(message);
+  /**Creates a new completion item
+   * @param label
+   * @param documentation
+   * @param kind
+   * @param insertText
+   */
+  Add(label: string, documentation: string | MarkupContent, kind: CompletionItemKind = CompletionItemKind.Keyword, insertText: string | undefined = undefined): CompletionItem {
+    let item = CompletionItem.create(label);
+
+    if (typeof documentation === "string") {
+      item.documentation = { kind: "markdown", value: documentation };
+    } else {
+      item.documentation = documentation;
+    }
+
+    if (insertText) item.insertText = insertText;
+    item.kind = kind;
+
+    this.Push(item);
+
+    return item;
   }
 
-  /**Sends a error to the console log of the server*/
-  static Log(message: string): void {
-    ConnectionManager.Connection.console.log(message);
-  }
+  /**Pushes the item onto the collection and raises a possible event
+   * @param Item The item to add
+   */
+  Push(Item: CompletionItem): void {
+    if (this.OnNewItem) {
+      this.OnNewItem(Item);
+    }
 
-  /**Sends a error to the console log of the server*/
-  static Warn(message: string): void {
-    ConnectionManager.Connection.console.warn(message);
+    this.items.push(Item);
   }
 }

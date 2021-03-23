@@ -27,9 +27,18 @@ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
 CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.*/
-import { Connection } from "vscode-languageserver";
+import { Connection, Diagnostic } from "vscode-languageserver";
+import { TextDocument } from "vscode-languageserver-textdocument";
 
 export class ConnectionManager {
   //Server stuff
   static Connection: Connection;
+
+  /**Sends the diagnostics to the client
+   * @param doc
+   * @param Diagnostics
+   */
+  static SendDiagnostics(doc: TextDocument, Diagnostics: Diagnostic[]): void {
+    ConnectionManager.Connection?.sendDiagnostics({ diagnostics: Diagnostics, uri: doc.uri });
+  }
 }
