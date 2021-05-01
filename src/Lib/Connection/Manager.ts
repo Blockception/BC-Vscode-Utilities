@@ -30,6 +30,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.*/
 import { Connection, Diagnostic, TextDocuments } from "vscode-languageserver";
 import { TextDocument } from "vscode-languageserver-textdocument";
 
+//**A connector to vscode clients*/
 export class ConnectionManager {
   //Server stuff
   static Connection: Connection;
