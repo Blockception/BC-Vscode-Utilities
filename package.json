@@ -1,6 +1,6 @@
 {
   "name": "bc-vscode-utilities",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The basic utillities for LSP extensions for vscode",
   "main": "./lib/src/main.js",
   "types": "./lib/src/main.d.ts",
@@ -14,7 +14,7 @@
     "prepublishOnly": "npm test",
     "preversion": "",
     "postversion": "git push && git push --tags",
-    "version": "npm run format && git add -A src",
+    "version": "git add -A src",
     "watch": "tsc -w -p ./src"
   },
   "repository": {
