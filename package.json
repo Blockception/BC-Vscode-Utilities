@@ -36,18 +36,20 @@
     "!lib/test"
   ],
   "dependencies": {
-    "bc-vscode-words": "^1.0.10",
+    "bc-vscode-words": "^1.3.0",
     "comment-json": "^4.1.0",
     "fast-glob": "^3.2.5",
     "vscode-languageserver": "^7.0.0",
     "vscode-languageserver-textdocument": "^1.0.1"
   },
   "devDependencies": {
-    "@types/mocha": "^8.2.1",
-    "@types/node": "^10.17.54",
-    "mocha": "^8.3.0",
+    "@types/chai": "^4.2.21",
+    "@types/mocha": "^8.2.3",
+    "@types/node": "^10.17.60",
+    "chai": "^4.3.4",
+    "mocha": "^8.4.0",
     "rimraf": "^3.0.2",
     "ts-node": "^9.1.1",
-    "typescript": "^4.1.5"
+    "typescript": "^4.3.5"
   }
 }
