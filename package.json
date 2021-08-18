@@ -1,6 +1,6 @@
 {
   "name": "bc-vscode-utilities",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "The basic utillities for LSP extensions for vscode",
   "main": "./lib/src/main.js",
   "types": "./lib/src/main.d.ts",
